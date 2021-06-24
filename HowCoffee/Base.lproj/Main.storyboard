@@ -17,12 +17,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="3dJ-Av-oVG">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OrderTableViewCell" textLabel="Rb6-xE-O8V" detailTextLabel="WpI-Ja-AUk" style="IBUITableViewCellStyleValue1" id="3dJ-Av-oVG">
                                 <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3dJ-Av-oVG" id="DkG-it-Cpd">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Rb6-xE-O8V">
+                                            <rect key="frame" x="20" y="15" width="25" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WpI-Ja-AUk">
+                                            <rect key="frame" x="361" y="15" width="33" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -43,7 +59,7 @@
             </objects>
             <point key="canvasLocation" x="931.88405797101461" y="127.90178571428571"/>
         </scene>
-        <!--Add New Order-->
+        <!--AddNewOrder-->
         <scene sceneID="5kx-SC-Zie">
             <objects>
                 <viewController id="KDe-bP-dw1" customClass="AddOrderViewController" customModule="HowCoffee" customModuleProvider="target" sceneMemberID="viewController">
@@ -55,15 +71,28 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="448"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="JNL-KI-2bL">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CoffeeTypeTableViewCell" textLabel="GN9-5u-2ic" style="IBUITableViewCellStyleDefault" id="JNL-KI-2bL">
                                         <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JNL-KI-2bL" id="cd3-vU-XRL">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GN9-5u-2ic">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="KDe-bP-dw1" id="R34-1n-0Eh"/>
+                                    <outlet property="delegate" destination="KDe-bP-dw1" id="PkL-6q-FtV"/>
+                                </connections>
                             </tableView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d76-NZ-ccz">
                                 <rect key="frame" x="107" y="663" width="200" height="34"/>
@@ -81,31 +110,32 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QGb-c9-8Wt">
-                                <rect key="frame" x="104" y="565" width="206" height="32"/>
-                                <segments>
-                                    <segment title="Small"/>
-                                    <segment title="Medium"/>
-                                    <segment title="Large"/>
-                                </segments>
-                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7PJ-xc-Dap"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="d76-NZ-ccz" firstAttribute="centerX" secondItem="fUJ-yr-tss" secondAttribute="centerX" id="3ZC-2w-7pa"/>
                             <constraint firstItem="qwY-zm-3Z5" firstAttribute="top" secondItem="7PJ-xc-Dap" secondAttribute="top" id="6c1-sU-bao"/>
-                            <constraint firstItem="QGb-c9-8Wt" firstAttribute="centerX" secondItem="fUJ-yr-tss" secondAttribute="centerX" id="Hha-fi-1KT"/>
+                            <constraint firstItem="7PJ-xc-Dap" firstAttribute="bottom" secondItem="2se-k5-WuI" secondAttribute="bottom" constant="107" id="IlT-DT-fei"/>
                             <constraint firstItem="qwY-zm-3Z5" firstAttribute="width" secondItem="fUJ-yr-tss" secondAttribute="width" id="ZVJ-cW-LPo"/>
-                            <constraint firstItem="QGb-c9-8Wt" firstAttribute="top" secondItem="qwY-zm-3Z5" secondAttribute="bottom" constant="29" id="aD5-As-xBw"/>
                             <constraint firstItem="qwY-zm-3Z5" firstAttribute="leading" secondItem="7PJ-xc-Dap" secondAttribute="leading" id="bpr-Q3-EgU"/>
                             <constraint firstItem="2se-k5-WuI" firstAttribute="top" secondItem="d76-NZ-ccz" secondAttribute="bottom" constant="24" id="mfY-m4-7Gm"/>
                             <constraint firstItem="qwY-zm-3Z5" firstAttribute="height" secondItem="fUJ-yr-tss" secondAttribute="height" multiplier="0.5" id="qEs-Ky-MoL"/>
-                            <constraint firstItem="d76-NZ-ccz" firstAttribute="top" secondItem="QGb-c9-8Wt" secondAttribute="bottom" constant="67" id="yxM-OJ-nUE"/>
                             <constraint firstItem="2se-k5-WuI" firstAttribute="centerX" secondItem="fUJ-yr-tss" secondAttribute="centerX" id="zwx-oX-nBa"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Add New Order" id="r7C-IB-4Xa"/>
+                    <navigationItem key="navigationItem" title="AddNewOrder" id="jIv-9s-YLu">
+                        <barButtonItem key="rightBarButtonItem" title="SAVE" id="2zZ-Y7-f7O">
+                            <connections>
+                                <action selector="save" destination="KDe-bP-dw1" id="81l-p5-UqO"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="countTextField" destination="2se-k5-WuI" id="635-d4-PHQ"/>
+                        <outlet property="nameTextField" destination="d76-NZ-ccz" id="gGR-5i-Dg3"/>
+                        <outlet property="tableView" destination="qwY-zm-3Z5" id="25w-gp-bPJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9QQ-D0-Wfa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

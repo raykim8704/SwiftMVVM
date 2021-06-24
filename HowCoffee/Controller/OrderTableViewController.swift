@@ -8,27 +8,21 @@
 import UIKit
 
 class OrderTableViewController: UITableViewController {
+    
+    var orderListViewModel = OrderListViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
         populateOrders()
     }
     private func populateOrders(){
-        guard let CoffeeOrdersURL = URL(string:"https://guarded-retreat-82533.herokuapp.com") else{
-            fatalError("URL was incorrect")
-            return
-        }
-        let resource = Resource<[Order]>(url: CoffeeOrdersURL)
-        Webservice().load(resource: resource) { result in
+
+        Webservice().load(resource: Order.all) { [weak self] result in
             switch result {
             case .success(let orders) :
                 print(orders)
+                self?.orderListViewModel.ordersViewModel = orders.map(OrderViewModel.init)
+                self?.tableView.reloadData()
             case .failure(let errors) :
                 print(errors)
                 
@@ -40,14 +34,21 @@ class OrderTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.orderListViewModel.ordersViewModel.count
     }
 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let vm = self.orderListViewModel.orderViewModelList(at: indexPath.row)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OrderTableViewCell", for: indexPath)
+        cell.textLabel?.text = vm.name
+        cell.detailTextLabel?.text = vm.coffeeName
+        return cell
+    }
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
