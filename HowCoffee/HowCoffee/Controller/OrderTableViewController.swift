@@ -7,7 +7,18 @@
 
 import UIKit
 
-class OrderTableViewController: UITableViewController {
+class OrderTableViewController: UITableViewController, AddCoffeeOrderDelegate {
+    func addCoffeeOrderViewControllerDidSave(order: Order, controller: UIViewController) {
+        controller.dismiss(animated: true, completion: nil)
+        let orderVM = OrderViewModel(order: order)
+        self.orderListViewModel.ordersViewModel.append(orderVM)
+        self.tableView.insertRows(at: [IndexPath.init(row: self.orderListViewModel.ordersViewModel.count - 1, section: 0)], with: .automatic)
+    }
+    
+    func addCoffeeOrderViewContorllerDidClose(controller: UIViewController) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
     
     var orderListViewModel = OrderListViewModel()
 
@@ -48,6 +59,15 @@ class OrderTableViewController: UITableViewController {
         cell.textLabel?.text = vm.name
         cell.detailTextLabel?.text = vm.coffeeName
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let navC = segue.destination as? UINavigationController,
+              let addCoffeOrderVC = navC.viewControllers.first as? AddOrderViewController
+        else {
+            fatalError("Error performing segue")
+        }
+        addCoffeOrderVC.delegate = self
     }
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
