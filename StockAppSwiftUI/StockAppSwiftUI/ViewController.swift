@@ -13,12 +13,16 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         //     print(solution(0, 1, 11))
-//        print(sol(3, computers: [[1, 1, 0], [1, 1, 0], [0, 0, 1]]))
-//        print(solution("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"]))
-//        print(solution2([["ICN", "SFO"], ["ICN", "ATL"], ["SFO", "ATL"], ["ATL", "ICN"], ["ATL","SFO"]]))
-//        print(solution3( ["classic", "pop", "classic", "classic", "pop"],  [500, 600, 150, 800, 2500]))
-//        print(solution4([4,3,4,4,4,2]))
-        print(solution5([2, 1, 1, 2, 3, 1]))
+        //        print(sol(3, computers: [[1, 1, 0], [1, 1, 0], [0, 0, 1]]))
+        //        print(solution("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"]))
+        //        print(solution2([["ICN", "SFO"], ["ICN", "ATL"], ["SFO", "ATL"], ["ATL", "ICN"], ["ATL","SFO"]]))
+        //        print(solution3( ["classic", "pop", "classic", "classic", "pop"],  [500, 600, 150, 800, 2500]))
+        //        print(solution4([4,3,4,4,4,2]))
+        //        print(solution5([2, 1, 1, 2, 3, 1]))
+        
+        //        print(solution6([[0, 0, 0, 1, 1],[0, 0, 0, 1, 0],[0, 1, 0, 1, 1],[1, 1, 0, 0, 1],[0, 0, 0, 0, 0]]))
+        //        print(solution7([[0,3],[1,6],[2,9],[3,3]]))
+        print(solution9([1]))
         
     }
     //    Write a function:
@@ -55,13 +59,13 @@ class ViewController: UIViewController {
     
     /*
      두 개의 단어 begin, target과 단어의 집합 words가 있습니다. 아래와 같은 규칙을 이용하여 begin에서 target으로 변환하는 가장 짧은 변환 과정을 찾으려고 합니다.
-
+     
      1. 한 번에 한 개의 알파벳만 바꿀 수 있습니다.
      2. words에 있는 단어로만 변환할 수 있습니다.
      예를 들어 begin이 "hit", target가 "cog", words가 ["hot","dot","dog","lot","log","cog"]라면 "hit" -> "hot" -> "dot" -> "dog" -> "cog"와 같이 4단계를 거쳐 변환할 수 있습니다.
-
+     
      두 개의 단어 begin, target과 단어의 집합 words가 매개변수로 주어질 때, 최소 몇 단계의 과정을 거쳐 begin을 target으로 변환할 수 있는지 return 하도록 solution 함수를 작성해주세요.
-
+     
      제한사항
      각 단어는 알파벳 소문자로만 이루어져 있습니다.
      각 단어의 길이는 3 이상 10 이하이며 모든 단어의 길이는 같습니다.
@@ -72,9 +76,9 @@ class ViewController: UIViewController {
      */
     /*
      주어진 항공권을 모두 이용하여 여행경로를 짜려고 합니다. 항상 "ICN" 공항에서 출발합니다.
-
+     
      항공권 정보가 담긴 2차원 배열 tickets가 매개변수로 주어질 때, 방문하는 공항 경로를 배열에 담아 return 하도록 solution 함수를 작성해주세요.
-
+     
      제한사항
      모든 공항은 알파벳 대문자 3글자로 이루어집니다.
      주어진 공항 수는 3개 이상 10,000개 이하입니다.
@@ -90,12 +94,12 @@ class ViewController: UIViewController {
      */
     /*
      스트리밍 사이트에서 장르 별로 가장 많이 재생된 노래를 두 개씩 모아 베스트 앨범을 출시하려 합니다. 노래는 고유 번호로 구분하며, 노래를 수록하는 기준은 다음과 같습니다.
-
+     
      속한 노래가 많이 재생된 장르를 먼저 수록합니다.
      장르 내에서 많이 재생된 노래를 먼저 수록합니다.
      장르 내에서 재생 횟수가 같은 노래 중에서는 고유 번호가 낮은 노래를 먼저 수록합니다.
      노래의 장르를 나타내는 문자열 배열 genres와 노래별 재생 횟수를 나타내는 정수 배열 plays가 주어질 때, 베스트 앨범에 들어갈 노래의 고유 번호를 순서대로 return 하도록 solution 함수를 완성하세요.
-
+     
      제한사항
      genres[i]는 고유번호가 i인 노래의 장르입니다.
      plays[i]는 고유번호가 i인 노래가 재생된 횟수입니다.
@@ -107,16 +111,390 @@ class ViewController: UIViewController {
      ["classic", "pop", "classic", "classic", "pop"]    [500, 600, 150, 800, 2500]    [4, 1, 3, 0]
      입출력 예 설명
      classic 장르는 1,450회 재생되었으며, classic 노래는 다음과 같습니다.
-
+     
      고유 번호 3: 800회 재생
      고유 번호 0: 500회 재생
      고유 번호 2: 150회 재생
      pop 장르는 3,100회 재생되었으며, pop 노래는 다음과 같습니다.
-
+     
      고유 번호 4: 2,500회 재생
      고유 번호 1: 600회 재생
      따라서 pop 장르의 [4, 1]번 노래를 먼저, classic 장르의 [3, 0]번 노래를 그다음에 수록합니다.
      */
+    
+    public func solution8(_ A: [Int]) -> Int {
+        let sorted = A.sorted(by: {$0<$1})
+        var leaderStack = [Int]()
+        var leader : Int?
+        
+        for s in sorted{
+            if leaderStack.isEmpty{
+                leaderStack.append(s)
+                if sorted.count == 1 {
+                    leader = s
+                }
+            }else{
+                if leaderStack.last == s{
+                    leaderStack.append(s)
+                    if leaderStack.count > sorted.count/2{
+                        //he is leader
+                        leader = leaderStack.last
+                        break
+                    }
+                }else{
+                    leaderStack.removeAll()
+                    leaderStack.append(s)
+                }
+            }
+        }
+        
+        return leader == nil ? -1 : A.firstIndex(of: leader!)!
+        
+    }
+    
+    func solution9(_ A:[Int]) -> Int{
+        
+        func findLeader(_ A:[Int]) -> Int?{
+            let sorted = A.sorted(by: {$0<$1})
+            var leaderStack = [Int]()
+            var leader : Int?
+            
+            for s in sorted{
+                if leaderStack.isEmpty{
+                    leaderStack.append(s)
+                    if sorted.count == 1 {
+                        leader = s
+                    }
+                }else{
+                    if leaderStack.last == s{
+                        leaderStack.append(s)
+                        if leaderStack.count > sorted.count/2{
+                            //he is leader
+                            leader = leaderStack.last
+                            break
+                        }
+                    }else{
+                        leaderStack.removeAll()
+                        leaderStack.append(s)
+                    }
+                }
+            }
+            
+            return leader
+        }
+        func checkLeader(_ A:[Int],_ checker:Int) -> Bool{
+            let check = A.filter{$0 == checker}
+            return check.count > A.count/2 ? true : false
+//            return false
+        }
+        func compareLeader(_ A:[Int],_ B:[Int]) -> Bool{
+            guard let aLeader = findLeader(A) else {
+                return false
+            }
+            return checkLeader(B, aLeader)
+        }
+        var count = 0
+        for i in 0..<A.count{
+            count += compareLeader(Array(A[0...i]), Array(A[(i+1)..<A.count])) ? 1 : 0
+        }
+        return count
+    }
+    
+    
+    func solution7(_ record:[[Int]])->Int{
+        
+        var sorted = record.sorted { $0[0] == $1[0] ? $0[1] < $1[1] : $0[0] < $1[0]  }
+        //                    sorted.sort{ $0[1] == $1[1] ? $0[1] < $1[1] : $0[0] < $1[0]  }
+        var totalTime = 0
+        var queue = [sorted.removeFirst()]
+        
+        var play = [Int]()
+        while !queue.isEmpty{
+            let play = queue.removeFirst()
+            print(play)
+            if queue.isEmpty{
+                
+                let next = sorted.filter{$0[0]<=play[1]}.sorted(by: {$0[1]<$1[1]})
+                //                sorted.first[1] <= play[1]
+                
+                //                if let firstIndex = sorted.firstIndex(where: {$0[0]>play[1]}){
+                ////                    sorted.removeSubrange(0..<firstIndex)
+                //                    for _ in 0..<firstIndex{
+                //                        queue.append(sorted.removeFirst())
+                //                    }
+                //                }else{
+                //                    queue.append(sorted.removeFirst())
+                //                }
+                //                print(firstIndex)
+                //                sorted.removeSubrange(Range.init(0...firstIndex))
+                
+            }
+        }
+        
+        //        for r in sorted{
+        
+        //
+        //        }
+        print(sorted)
+        return 1
+    }
+    
+    func solution6(_ board:[[Int]]) -> Int{
+        
+        let start = [[0,0],[1,0]]
+        
+        var result : Int?
+        
+        func isVertical(_ current:[[Int]]) ->Bool{
+            return current[0][0] == current[1][0] ? true : false
+        }
+        func sortPoint(_ point:[[Int]]) -> [[Int]]{
+            var copy = point
+            if isVertical(point){
+                copy = copy.sorted(by: { $0[1] < $1[1]  })
+            }else{
+                copy = copy.sorted(by: { $0[0] < $1[0]})
+            }
+            return copy
+        }
+        func didVisitBefore(_ next:[[Int]],_ history:[[[Int]]]) -> Bool{
+            let next = sortPoint(next)
+            return history.contains(next) ? true : false
+        }
+        
+        
+        func getMoveRight(_ current:[[Int]]) -> (Int,Int,Int,Int){
+            let x1 = current[0][0] + 1
+            let y1 = current[0][1]
+            let x2 = current[1][0] + 1
+            let y2 = current[1][1]
+            return (x1,y1,x2,y2)
+        }
+        func canMoveRight(_ current:[[Int]]) -> Bool{
+            let (x1,y1,x2,y2) = getMoveRight(current)
+            if isVertical(current){
+                return  x1 < board.count && x2 < board.count && board[y1][x1] == 0 && board[y2][x2] == 0 ? true : false
+            }else{
+                return x1 < board.count && x2 < board.count && board[y2][x2] == 0 ? true : false
+            }
+        }
+        
+        func getMoveLeft(_ current:[[Int]]) -> (Int,Int,Int,Int){
+            let x1 = current[0][0] - 1
+            let y1 = current[0][1]
+            let x2 = current[1][0] - 1
+            let y2 = current[1][1]
+            return (x1,y1,x2,y2)
+        }
+        func canMoveLeft(_ current:[[Int]]) -> Bool{
+            let (x1,y1,x2,y2) = getMoveLeft(current)
+            
+            if isVertical(current){
+                return  x1 >= 0 && x2 >= 0 && board[y1][x1] == 0 && board[y2][x2] == 0 ? true : false
+            }else{
+                return x1 >= 0 && x2 >= 0  && board[y1][x1] == 0 ? true : false
+            }
+        }
+        
+        func getMoveUp(_ current:[[Int]]) -> (Int,Int,Int,Int){
+            let x1 = current[0][0]
+            let y1 = current[0][1] - 1
+            let x2 = current[1][0]
+            let y2 = current[1][1] - 1
+            return (x1,y1,x2,y2)
+        }
+        func canMoveUp(_ current:[[Int]]) -> Bool{
+            let (x1,y1,x2,y2) = getMoveUp(current)
+            if isVertical(current){
+                return y1 >= 0 && y2 >= 0 && board[y1][x1] == 0 ? true : false
+            }else{
+                return  y1 >= 0 && y2 >= 0  && board[y1][x1] == 0 && board[y2][x2] == 0 ? true : false
+            }
+        }
+        
+        func getMoveDown(_ current:[[Int]]) -> (Int,Int,Int,Int){
+            let x1 = current[0][0]
+            let y1 = current[0][1] + 1
+            let x2 = current[1][0]
+            let y2 = current[1][1] + 1
+            return (x1,y1,x2,y2)
+        }
+        
+        func canMoveDown(_ current:[[Int]]) -> Bool{
+            let (x1,y1,x2,y2) = getMoveDown(current)
+            if isVertical(current){
+                return y1 < board.count && y2 < board.count  && board[y2][x2] == 0 ? true : false
+            }else{
+                return  y1 < board.count &&  y2 < board.count && board[y1][x1] == 0 && board[y2][x2] == 0 ? true : false
+            }
+            
+        }
+        func canRotateClockWise(_ current:[[Int]],_ axis:Int) -> Bool{
+            if isVertical(current){
+                if axis == 0 {
+                    return canMoveLeft(current)
+                }else{
+                    return canMoveRight(current)
+                }
+            }else{
+                if axis == 0{
+                    return canMoveDown(current)
+                }else{
+                    return canMoveUp(current)
+                }
+            }
+        }
+        func canRotateCounterClockWise(_ current:[[Int]],_ axis:Int) -> Bool{
+            if isVertical(current){
+                if axis == 0 {
+                    return canMoveRight(current)
+                }else{
+                    return canMoveLeft(current)
+                }
+            }else{
+                if axis == 0{
+                    return canMoveUp(current)
+                }else{
+                    return canMoveDown(current)
+                    
+                }
+            }
+        }
+        
+        func getRotateClockWise(_ current:[[Int]], axis:Int) ->(Int,Int,Int,Int){
+            if isVertical(current){
+                if axis == 0 {
+                    let x1 = current[0][0]
+                    let y1 = current[0][1]
+                    let x2 = x1 - 1
+                    let y2 = y1
+                    return (x1,y1,x2,y2)
+                }else{
+                    
+                    let x2 = current[1][0]
+                    let y2 = current[1][1]
+                    let x1 = x2 + 1
+                    let y1 = y2
+                    return (x1,y1,x2,y2)
+                }
+            }else{
+                if axis == 0 {
+                    let x1 = current[0][0]
+                    let y1 = current[0][1]
+                    let x2 = x1
+                    let y2 = y1 + 1
+                    return (x1,y1,x2,y2)
+                }else{
+                    let x2 = current[1][0]
+                    let y2 = current[1][1]
+                    let x1 = x2
+                    let y1 = y2 - 1
+                    return (x1,y1,x2,y2)
+                }
+            }
+        }
+        func getRotateCounterClockWise(_ current:[[Int]], axis:Int) ->(Int,Int,Int,Int){
+            if isVertical(current){
+                if axis == 0 {
+                    let x1 = current[0][0]
+                    let y1 = current[0][1]
+                    let x2 = x1 + 1
+                    let y2 = y1
+                    return (x1,y1,x2,y2)
+                }else{
+                    
+                    let x2 = current[1][0]
+                    let y2 = current[1][1]
+                    let x1 = x2 - 1
+                    let y1 = y2
+                    return (x1,y1,x2,y2)
+                }
+            }else{
+                if axis == 0 {
+                    let x1 = current[0][0]
+                    let y1 = current[0][1]
+                    let x2 = x1
+                    let y2 = y1 - 1
+                    return (x1,y1,x2,y2)
+                }else{
+                    let x2 = current[1][0]
+                    let y2 = current[1][1]
+                    let x1 = x2
+                    let y1 = y2 + 1
+                    return (x1,y1,x2,y2)
+                }
+            }
+        }
+        
+        func moveRobot(_ current:[[Int]],_ history:[[[Int]]],_ time:Int){
+            var historyLog = history
+            //            print(current)
+            //            print([board.count-1,board.count-1])
+            //
+            if current.contains([board.count-1,board.count-1]) {
+                if result == nil {
+                    result = time
+                }else{
+                    result = min(result!, time)
+                }
+                
+                return }
+            if didVisitBefore(current, history){
+                return
+            }
+            historyLog.append(sortPoint(current))
+            
+            if canMoveUp(current){
+                let (x1,y1,x2,y2) = getMoveUp(current)
+                let next = [[x1,y1],[x2,y2]]
+                moveRobot(next, historyLog, time+1)
+            }
+            if canMoveDown(current){
+                let (x1,y1,x2,y2) = getMoveDown(current)
+                let next = [[x1,y1],[x2,y2]]
+                moveRobot(next, historyLog, time+1)
+            }
+            if canMoveLeft(current){
+                let (x1,y1,x2,y2) = getMoveLeft(current)
+                let next = [[x1,y1],[x2,y2]]
+                moveRobot(next, historyLog, time+1)
+            }
+            if canMoveRight(current){
+                let (x1,y1,x2,y2) = getMoveRight(current)
+                let next = [[x1,y1],[x2,y2]]
+                moveRobot(next, historyLog, time+1)
+            }
+            if canRotateClockWise(current, 0){
+                let (x1,y1,x2,y2) = getRotateClockWise(current, axis: 0)
+                let next = [[x1,y1],[x2,y2]]
+                moveRobot(next, historyLog, time+1)
+            }
+            if canRotateClockWise(current, 1){
+                let (x1,y1,x2,y2) = getRotateClockWise(current, axis: 1)
+                let next = [[x1,y1],[x2,y2]]
+                moveRobot(next, historyLog, time+1)
+            }
+            if canRotateCounterClockWise(current, 0){
+                let (x1,y1,x2,y2) = getRotateCounterClockWise(current, axis: 0)
+                let next = [[x1,y1],[x2,y2]]
+                moveRobot(next, historyLog, time+1)
+            }
+            if canRotateCounterClockWise(current, 1){
+                let (x1,y1,x2,y2) = getRotateCounterClockWise(current, axis: 1)
+                let next = [[x1,y1],[x2,y2]]
+                moveRobot(next, historyLog, time+1)
+            }
+            
+        }
+        moveRobot(start, [], 0)
+        //
+        //        print(canMoveUp(start))
+        //        print(canMoveDown(start))
+        //        print(canMoveLeft(start))
+        //        print(canMoveRight(start))
+        
+        return result!
+    }
     
     func solution5(_ A:[Int]) -> Int {
         var visited = [Int]()
@@ -139,26 +517,26 @@ class ViewController: UIViewController {
     
     func solution4(_ A:[Int]) -> Int{
         func findLeader(_ arr:[Int]) ->Int?{
-//            var counter = [Int:Int]()
+            //            var counter = [Int:Int]()
             var counts: [Int: Int] = [:]
             var isLeader : Int?
             let unique = Array(Set(arr))
-       
+            
             for u in unique{
                 if arr.reduce(0, { $1 == u ? $0 + 1 : $0 }) > arr.count/2{
                     isLeader = u
                 }
             }
             return isLeader
-       
             
-//            arr.forEach { counts[$0, default: 0] += 1 }
-////            print( )
-//            return counts.filter { e -> Bool in
-//                return e.value > arr.count/2
-//            }.keys.first
+            
+            //            arr.forEach { counts[$0, default: 0] += 1 }
+            ////            print( )
+            //            return counts.filter { e -> Bool in
+            //                return e.value > arr.count/2
+            //            }.keys.first
         }
-//        findLeader(Array<Int>(leaders[0...3]))
+        //        findLeader(Array<Int>(leaders[0...3]))
         var count = 0
         for i in 0..<(A.count-1){
             let pre = findLeader(Array<Int>(A[0...i]))
@@ -171,7 +549,7 @@ class ViewController: UIViewController {
                 count += 1
             }
         }
-//        print(count)
+        //        print(count)
         return count
     }
     func solution3(_ genres:[String], _ plays:[Int]) -> [Int] {
@@ -191,10 +569,10 @@ class ViewController: UIViewController {
             }
             
         }
-      
-          let sorted =   playList
-                .sorted{ $0.value[0].reduce(0){ $0 + $1 } > $1.value[0].reduce(0){ $0 + $1 }}
-                .map{ $0.1[1]}
+        
+        let sorted =   playList
+            .sorted{ $0.value[0].reduce(0){ $0 + $1 } > $1.value[0].reduce(0){ $0 + $1 }}
+            .map{ $0.1[1]}
         var result = [Int]()
         for sort in sorted{
             if sort.count > 2 {
@@ -203,8 +581,8 @@ class ViewController: UIViewController {
                 result.append(contentsOf: sort)
             }
         }
-
-   
+        
+        
         return result
     }
     
@@ -214,7 +592,7 @@ class ViewController: UIViewController {
         
         func travel(_ to:String,_ leftTickets:[[String]]){
             if leftTickets.isEmpty {return}
-//            print(leftTickets.filter { return $0[0] == to}.sorted(by: { $0[1] < $1[1] }).first)
+            //            print(leftTickets.filter { return $0[0] == to}.sorted(by: { $0[1] < $1[1] }).first)
             let next = leftTickets.filter { return $0[0] == to}.sorted(by: { $0[1] < $1[1] }).first
             visited.append(next![1])
             var copy = leftTickets
@@ -282,7 +660,7 @@ class ViewController: UIViewController {
                 ans += 1
                 dfs(current, computers[current])
             }
-   
+            
         }
         return ans
     }
